@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.conf import settings
 
 import requests
 
@@ -8,8 +9,8 @@ import json
 url = "https://covid-193.p.rapidapi.com/statistics"
 
 headers = {
-    'x-rapidapi-key': "0b8e173dd4msh80bdf54ce2e946ap13925djsn208f3501941e",
-    'x-rapidapi-host': "covid-193.p.rapidapi.com"
+    'x-rapidapi-key': settings.API_KEY,
+    'x-rapidapi-host': settings.API_HOST
     }
 
 response = requests.request("GET", url, headers=headers).json()
