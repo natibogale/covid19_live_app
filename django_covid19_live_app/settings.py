@@ -2,6 +2,17 @@ import dj_database_url
 import django_heroku
 import environ
 import os
+from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
+
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_covid19_live_app.settings")
+
+application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
+
+
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -121,6 +132,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
