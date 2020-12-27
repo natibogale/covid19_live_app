@@ -1,6 +1,7 @@
 import dj_database_url
 import django_heroku
 import environ
+import os
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -21,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('DJANGO_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 API_KEY=env('API_KEY')
 API_HOST = env('API_HOST')
-ALLOWED_HOSTS = ['covid19-easyapp.herokuapp.com/']
+ALLOWED_HOSTS = ['covid19-easyapp.herokuapp.com/','127.0.0.1']
 
 
 # Application definition
@@ -119,4 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-django_heroku.settings(locals())
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
