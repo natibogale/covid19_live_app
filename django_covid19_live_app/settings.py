@@ -11,12 +11,12 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_covid19_live_app.setting
 
 
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-# reading .env file
-environ.Env.read_env() 
+# env = environ.Env(
+#     # set casting, default value
+#     DEBUG=(bool, False)
+# )
+# # reading .env file
+# environ.Env.read_env() 
 
 from pathlib import Path
 
@@ -32,9 +32,9 @@ SECRET_KEY = 'r#m=uvl=)v^8x=e$bmvladkezjrr_)z3qlz5$1*z*rv#vk$s*1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-API_KEY=env('API_KEY')
-API_HOST = env('API_HOST')
-ALLOWED_HOSTS = ['covid19-easyapp.herokuapp.com/','127.0.0.1']
+# API_KEY=env('API_KEY')
+# API_HOST = env('API_HOST')
+ALLOWED_HOSTS = ['covid19-easyapp.herokuapp.com','127.0.0.1']
 
 
 # Application definition
