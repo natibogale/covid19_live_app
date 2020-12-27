@@ -45,14 +45,33 @@ def home(request):
         # print(selectedCountry)
         for x in range(0,results):
             if selectedCountry == response['response'][x]['country']:
-                new = response['response'][x]['cases']['new']
-                active = response['response'][x]['cases']['active']
-                critical = response['response'][x]['cases']['critical']
-                recovered = response['response'][x]['cases']['recovered']
-                total = response['response'][x]['cases']['total']
-                deaths = response['response'][x]['deaths']['total']
+                if response['response'][x]['cases']['new'] == None:
+                    new = 0
+                else:
+                    new = response['response'][x]['cases']['new']
+                if response['response'][x]['cases']['active'] == None:
+                    active = 0
+                else:
+                    active = response['response'][x]['cases']['active']
+                if response['response'][x]['cases']['critical'] == None:
+                    critical = 0
+                else:
+                    critical = response['response'][x]['cases']['critical']
+                if response['response'][x]['cases']['recovered'] == None:
+                    recovered = 0
+                else:
+                    recovered = response['response'][x]['cases']['recovered']
+                if response['response'][x]['cases']['total'] == None:
+                    total = 0
+                else:
+                    total = response['response'][x]['cases']['total']
+                if response['response'][x]['deaths']['total'] == None:
+                    deaths = 0
+                else:
+                    deaths = response['response'][x]['deaths']['total']
+                print(response['response'][x]['cases']['new'])
+
         context = {'lists':lists,'new':new,'active':active,'critical':critical,'recovered':recovered,'total':total,'deaths':deaths}
-        print(new)
         data = {
         'new' : new,
         'active' : active,
