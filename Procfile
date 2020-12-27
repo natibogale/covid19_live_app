@@ -1,2 +1,2 @@
-web:gunicorn django_covid19_live_app.wsgi 
+web: gunicorn django_covid19_live_app.wsgi 
 
