@@ -49,7 +49,7 @@ def home(request):
                     new = 0
                 else:
                     new = response['response'][x]['cases']['new']
-                    str.format(new)
+                    str.format(int(new))
                 if response['response'][x]['cases']['active'] == None:
                     active = 0
                 else:
