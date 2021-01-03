@@ -158,7 +158,7 @@
           },
           success: function (data) {
             if (data) {
-              document.getElementById("new").innerText = "+".data.new;
+              document.getElementById("new").innerText = "+"+data.new;
               document.getElementById("active").innerText = data.active;
               document.getElementById("critical").innerText = data.critical;
               document.getElementById("recovered").innerText = data.recovered;
