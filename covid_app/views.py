@@ -26,7 +26,7 @@ response = requests.request("GET", url, headers=headers).json()
 
 # response = requests.request("GET", url, headers=headers).json()
 
-
+str = "{:,}"
 
 def home(request):
     response = requests.request("GET", url, headers=headers).json()
@@ -49,26 +49,32 @@ def home(request):
                     new = 0
                 else:
                     new = response['response'][x]['cases']['new']
+                    str.format(new)
                 if response['response'][x]['cases']['active'] == None:
                     active = 0
                 else:
                     active = response['response'][x]['cases']['active']
+                    str.format(active)
                 if response['response'][x]['cases']['critical'] == None:
                     critical = 0
                 else:
                     critical = response['response'][x]['cases']['critical']
+                    str.format(critical)
                 if response['response'][x]['cases']['recovered'] == None:
                     recovered = 0
                 else:
                     recovered = response['response'][x]['cases']['recovered']
+                    str.format(recovered)
                 if response['response'][x]['cases']['total'] == None:
                     total = 0
                 else:
                     total = response['response'][x]['cases']['total']
+                    str.format(total)
                 if response['response'][x]['deaths']['total'] == None:
                     deaths = 0
                 else:
                     deaths = response['response'][x]['deaths']['total']
+                    str.format(deaths)
                 print(response['response'][x]['cases']['new'])
 
         context = {'lists':lists,'new':new,'active':active,'critical':critical,'recovered':recovered,'total':total,'deaths':deaths}
